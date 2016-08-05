@@ -1,0 +1,57 @@
+@import "compass/reset";
+@import "compass/css3";
+
+
+
+@mixin mixin-nav-bar($backColor,$colorText,$sizeTitle,$sizeDesc){
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  background-color: $backColor;
+  margin-bottom: 20px;
+  border: 1px solid $backColor;
+  color: $colorText;
+  @include box-shadow(#9899a1 0px 5px 10px);
+  h1{
+    margin: 0;
+    font-size: $sizeTitle;
+  }
+  p{
+    margin: 5px;
+    font-size: $sizeDesc;
+  }
+}
+
+.nav{
+  @include mixin-nav-bar(#3686cc,#fff,55px,18px);
+}
+main section h1{
+  @include text-shadow(#8fa9b5 0px 4px 8px);
+  font-size: 50px;
+  text-align: center;
+  color: #99a9a9;
+}
+
+@mixin team($color,$image){
+  @include inline-block;
+  @include box-shadow(#bbbcc4 0px 5px 10px);
+  @include border-radius(100%);
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  background-color: $color;
+  background-image: image-url($image);
+  background-size: cover;
+}
+.block-team{
+  text-align: center;
+}
+.team-blue{
+  @include team(#4892ff,'team1.png');
+}
+.team-orange{
+  @include team(#ff5810,'team2.png');
+}
+.team-green{
+  @include team(#22d174,'team3.png');
+}

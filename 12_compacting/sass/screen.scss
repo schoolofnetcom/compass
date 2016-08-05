@@ -1,0 +1,184 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/sprites";
+
+@import "social/*.png";
+//@include all-social-sprites;
+
+.facebook{ @include social-sprite(facebook);}
+.github{ @include social-sprite(github);}
+.plus{ @include social-sprite(plus);}
+.twitter{ @include social-sprite(twitter);}
+.youtube{ @include social-sprite(youtube);}
+
+ul.social-links li{
+  @include inline-block;
+  a{
+    display: block;
+    width: 60px;
+    height:60px;
+  }
+}
+
+@mixin mixin-nav-bar($backColor,$colorText,$sizeTitle,$sizeDesc){
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  background-color: $backColor;
+  margin-bottom: 20px;
+  border: 1px solid $backColor;
+  color: $colorText;
+  @include box-shadow(#9899a1 0px 5px 10px);
+  h1{
+    margin: 0;
+    font-size: $sizeTitle;
+  }
+  p{
+    margin: 5px;
+    font-size: $sizeDesc;
+  }
+}
+
+.nav{
+  @include mixin-nav-bar(#3686cc,#fff,55px,18px);
+}
+main section h1{
+  @include text-shadow(#8fa9b5 0px 4px 8px);
+  font-size: 50px;
+  text-align: center;
+  color: #99a9a9;
+}
+
+@mixin team($color,$image){
+  @include inline-block;
+  @include box-shadow(#bbbcc4 0px 5px 10px);
+  @include border-radius(100%);
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  background-color: $color;
+  background-image: image-url($image);
+  //background-size: cover;
+  @include background-size(cover);
+}
+.block-center{
+  text-align: center;
+}
+.team-blue{
+  @include team(#4892ff,'team1.png');
+}
+.team-orange{
+  @include team(#ff5810,'team2.png');
+}
+.team-green{
+  @include team(#22d174,'team3.png');
+}
+
+.gradient-example{
+  @include inline-block;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  margin: 1em 1em 0 0;
+}
+
+$color_g1: #3c67ff;
+$color_g2: #aeb4ff;
+$color_g3: #4bff79;
+$color_g4: #ff4c0a;
+
+#radial-gradient {
+  @include background-image(radial-gradient(45px 45px, $color_g1 10px, $color_g2 30px));
+}
+
+#linear-gradient {
+  @include background-image(linear-gradient(to bottom right, $color_g1, $color_g2));
+}
+
+#v-gradient {
+  @include background-image(linear-gradient($color_g1, $color_g2));
+}
+
+#v-gradient-2 {
+  @include background-image(linear-gradient($color_g1, $color_g2, $color_g3));
+}
+
+#v-gradient-3 {
+  @include background-image(linear-gradient($color_g1, $color_g2 30%, $color_g3 70%, $color_g4));
+}
+
+#h-gradient {
+  @include background-image(linear-gradient(to right, $color_g1, $color_g2));
+}
+#svg-gradient {
+  $svg-gradient-shim-threshold: 1 !global;
+  @include background-image(linear-gradient(to right, $color_g1, $color_g2, $color_g3));
+  width: 80px;
+  height: 80px;
+}
+
+#angle-gradient {
+  $svg-gradient-shim-threshold: 1 !global;
+  @include background-image(linear-gradient(120deg, $color_g1, $color_g2, $color_g3));
+  width: 80px;
+  height: 80px;
+}
+
+.test-animate{
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  @include animation(animation-test 10s infinite);
+}
+
+@include keyframes(animation-test){
+  0%{
+    background-color: blue;
+  }
+  50%{
+    background-color: red;
+  }
+  100%{
+    background-color: orange;
+  }
+}
+
+@include font-face("myfont", font-files('ARDESTINE.ttf'));
+
+.my-font{
+  font-family: "myfont";
+}
+
+.test-transition{
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  background-color: #3c67ff;
+  @include transition-property(width);
+  @include transition-duration(1s);
+  &:hover{
+    width: 600px;
+  }
+}
+input{
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+}
+
+input[type="text"]{
+  @include input-placeholder{
+    color: #959595;
+    font-size: 15px;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+
+
